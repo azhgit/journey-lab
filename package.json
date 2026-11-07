@@ -1,0 +1,51 @@
+{
+  "name": "journey-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p viewer",
+    "dev:api": "tsx watch src/mock-api/server.ts",
+    "chat": "tsx --env-file-if-exists=.env src/cli/chat.ts",
+    "gate": "tsx --env-file-if-exists=.env src/gate.ts",
+    "judge:sample": "tsx src/sim/sampleJudgments.ts",
+    "judge:negatives": "tsx --env-file-if-exists=.env src/sim/judgeNegatives.ts",
+    "seed:incident": "tsx --env-file-if-exists=.env src/analytics/seedIncident.ts",
+    "review": "tsx src/analytics/weeklyReview.ts",
+    "queries": "tsx src/analytics/queries.ts",
+    "viewer:api": "tsx watch --env-file-if-exists=.env src/viewer/server.ts",
+    "viewer": "vite build --config viewer/vite.config.ts && tsx --env-file-if-exists=.env src/viewer/server.ts",
+    "viewer:dev": "vite --config viewer/vite.config.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.3.0",
+    "@hono/node-server": "2.1.5",
+    "better-sqlite3": "13.0.3",
+    "graphql": "17.0.2",
+    "graphql-yoga": "6.0.1",
+    "hono": "4.13.14",
+    "pino": "10.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@fontsource-variable/public-sans": "5.3.0",
+    "@fontsource-variable/red-hat-mono": "5.3.0",
+    "@types/better-sqlite3": "9.6.0",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "fast-check": "4.10.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  }
+}

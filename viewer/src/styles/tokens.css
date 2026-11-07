@@ -1,0 +1,68 @@
+/* journey-lab viewer: the Loan Statement world. Statement paper, ink, ledger slate, hairline rules, one Northwind
+   teal. Ink is rationed by role: teal marks code-owned facts, ink is model language, red only a blocked or failed
+   claim. State is always carried by a mark and a word as well as a colour. */
+
+:root {
+  color-scheme: light;
+
+  --paper: #fbfbf9;
+  --paper-2: #f2f3f0; /* second neutral layer: nav, panels, the tool ledger */
+  --paper-3: #e9ebe7;
+  --ink: #16191d;
+  --ink-2: #3d4753; /* secondary text, 9:1 on paper */
+  --ink-3: #5f6a76; /* labels and captions, 5.3:1 on paper */
+  --rule: #d4d8dc;
+  --rule-soft: #e4e7e9;
+
+  --teal: #0e6b5f; /* code-owned facts; the statement band */
+  --teal-ink: #0a5047;
+  --teal-wash: #dfeee9;
+  --teal-wash-2: #eef6f3;
+  --red: #a3302a; /* blocked or failed only */
+  --red-ink: #7d231f;
+  --red-wash: #f7e7e4;
+
+  /* Chapter territory. Tint maps where you are, never state. */
+  --tint-facts: #eff5f3;
+  --tint-gate: #f5f4ef;
+  --tint-judge: #f1f3f7;
+  --tint-incident: #f6f2ef;
+  --tint-fine: #f2f3f0;
+
+  --font-sans: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
+  --font-mono: "Red Hat Mono Variable", "Red Hat Mono", ui-monospace, "SF Mono", monospace;
+
+  --text-2xs: 0.75rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-read: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.625rem;
+
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  --measure: 68ch;
+  --page: 76rem;
+  --nav-h: 3.5rem;
+  --radius: 3px; /* paper corners: barely there */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 140ms;
+  --t-base: 220ms;
+  --t-slow: 420ms;
+  --t-focal: 720ms;
+
+  --shadow-lift: 0 1px 2px rgb(22 25 29 / 0.06), 0 6px 18px -6px rgb(22 25 29 / 0.14);
+}

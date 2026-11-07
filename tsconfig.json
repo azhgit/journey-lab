@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "outDir": "dist",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+
+    // M5: full strict. noUncheckedIndexedAccess makes arr[i] and record[key] include `undefined`.
+    "strict": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["src", "test", "journeys", "vitest.config.ts"]
+}

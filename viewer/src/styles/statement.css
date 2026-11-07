@@ -1,0 +1,1038 @@
+/* ---- Running head: sticky under the nav, scroll-linked page counter ---- */
+
+.running-head {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.running-head__inner {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: var(--s-2) var(--s-5);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+.running-head__doc {
+  font-weight: 650;
+  color: var(--ink-2);
+}
+.running-head__chapter {
+  color: var(--ink);
+  font-weight: 600;
+}
+.running-head__chapter::before {
+  content: "—";
+  margin-right: var(--s-4);
+  color: var(--rule);
+}
+.running-head__page {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.running-head__rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--teal);
+  transform-origin: left center;
+}
+
+/* ---- Page 1: the statement sheet ---- */
+
+.sheet {
+  padding-top: var(--s-6);
+}
+/* The one Northwind teal band, as on the top of a printed statement. */
+.sheet__band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-7);
+  margin: 0 0 var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  background: var(--teal);
+  color: var(--paper);
+}
+.sheet__band dt {
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--paper) 78%, var(--teal));
+}
+.sheet__band dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.sheet__sub {
+  max-width: 52ch;
+  margin-top: var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--text-read);
+}
+.sheet__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+  gap: var(--s-6);
+  align-items: start;
+  padding-bottom: var(--s-5);
+  border-bottom: 3px solid var(--ink);
+}
+.sheet__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.due {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+.due__bar {
+  padding: var(--s-2) var(--s-4);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.due__body {
+  position: relative;
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-4);
+}
+.due__figure {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--s-2);
+}
+.due__figure .mono {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink-3);
+}
+.due__line {
+  font-size: var(--text-sm);
+}
+.due__fine {
+  margin-top: var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+.due__mark {
+  position: absolute;
+  right: var(--s-4);
+  top: var(--s-4);
+}
+
+.sheet__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--s-7);
+  margin-top: var(--s-4);
+}
+.sheet__h2 {
+  margin-bottom: var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--ink);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.leaders {
+  margin: 0;
+}
+.leaders__row {
+  display: grid;
+  grid-template-columns: auto minmax(1.5rem, 1fr) auto auto;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-3);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.leaders__row dt {
+  font-size: var(--text-sm);
+}
+.leaders__dots {
+  border-bottom: 1.5px dotted var(--rule);
+  transform: translateY(-0.25em);
+}
+.leaders__row dd {
+  margin: 0;
+  text-align: right;
+}
+.leaders__note {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+.leaders__value {
+  grid-column: -2 / -1;
+  min-width: 3.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.activity td {
+  padding: 0.55rem var(--s-3);
+}
+.activity a {
+  font-weight: 650;
+}
+.activity__entry {
+  width: 3.5rem;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+.activity__detail {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+/* Entries post as they come into view: a short settle, rows in order. */
+.motion-ok .leaders__row[data-reveal],
+.motion-ok .activity tr[data-reveal] {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity var(--t-slow) var(--ease-out),
+    clip-path var(--t-slow) var(--ease-out);
+}
+.motion-ok .activity tr[data-reveal] {
+  transition-delay: calc(var(--row, 0) * 70ms);
+}
+.motion-ok .leaders__row[data-reveal].is-in,
+.motion-ok .activity tr[data-reveal].is-in {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---- Chapters ---- */
+
+.chapter {
+  border-top: 1px solid var(--rule);
+}
+.chapter--facts {
+  background-color: color-mix(in srgb, var(--tint-facts) 45%, var(--paper));
+}
+.chapter--gate {
+  background-color: color-mix(in srgb, var(--tint-gate) 55%, var(--paper));
+}
+.chapter--judge {
+  background-color: color-mix(in srgb, var(--tint-judge) 45%, var(--paper));
+}
+.chapter--incident {
+  background-color: color-mix(in srgb, var(--tint-incident) 45%, var(--paper));
+}
+.chapter--fine {
+  background-color: var(--paper);
+}
+.chapter__inner {
+  padding-top: var(--s-8);
+  padding-bottom: var(--s-8);
+}
+.chapter__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+.chapter__lede {
+  margin-top: var(--s-3);
+}
+.chapter__body {
+  margin-top: var(--s-6);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+}
+.chapter__ref {
+  margin-bottom: calc(-1 * var(--s-3));
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+.ledger-table td {
+  padding: var(--s-3);
+}
+.ledger-table tbody tr:last-child td {
+  border-bottom: 1px solid var(--ink);
+}
+
+.adjustments h3,
+.incident h3 {
+  margin-bottom: var(--s-3);
+  font-size: var(--text-base);
+}
+.adjustments ol,
+.runbook {
+  display: grid;
+  gap: var(--s-3);
+  max-width: var(--measure);
+  margin: 0;
+  padding-left: 1.4rem;
+}
+.adjustments li,
+.runbook li {
+  padding-left: var(--s-1);
+}
+.adjustments li::marker,
+.runbook li::marker {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.source-note {
+  max-width: var(--measure);
+  margin-top: var(--s-4);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+/* Reveal for blocks: present by default; with motion, they settle in once. */
+.motion-ok .chapter [data-reveal]:not(tr):not(.gate-stub) {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--t-slow) var(--ease-out),
+    transform var(--t-slow) var(--ease-out);
+}
+.motion-ok .chapter [data-reveal].is-in:not(tr):not(.gate-stub) {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Gate: pinned horizontal run ---- */
+
+.gate-pin {
+  position: relative;
+}
+.gate-pin__frame {
+  position: relative;
+}
+.gate-pin__head {
+  width: 100%;
+  padding-top: var(--s-8);
+  padding-bottom: 0;
+}
+.gate-pin.is-pinned .gate-pin__frame {
+  position: sticky;
+  top: calc(var(--nav-h) + 2.2rem);
+  height: calc(100vh - var(--nav-h) - 2.2rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.gate-pin.is-pinned .gate-pin__head {
+  padding-top: var(--s-6);
+}
+.gate-pin__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  align-items: baseline;
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--rule);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.gate-pin__legend strong {
+  color: var(--ink);
+}
+.gate-pin__of {
+  color: var(--ink-3);
+}
+.gate-pin__hint {
+  margin-left: auto;
+}
+.gate-track {
+  overflow-x: auto;
+  padding: var(--s-2) 0 var(--s-6);
+  scrollbar-width: thin;
+}
+.gate-pin.is-pinned .gate-track {
+  overflow: hidden;
+}
+.gate-track__strip {
+  display: flex;
+  gap: var(--s-4);
+  width: max-content;
+  margin: 0;
+  padding: var(--s-5) max(var(--s-5), calc((100vw - var(--page)) / 2 + var(--s-5)));
+  list-style: none;
+  will-change: transform;
+}
+
+.gate-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  width: 15.5rem;
+  min-height: 19rem;
+  padding: var(--s-4);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.gate-stub--first {
+  margin-left: var(--s-5);
+}
+.gate-stub--first:first-child {
+  margin-left: 0;
+}
+.gate-stub__version {
+  position: absolute;
+  left: 0;
+  top: calc(-1 * var(--s-5) - 0.2rem);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.gate-stub__version::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  margin-top: 2px;
+  border-bottom: 2px solid var(--ink);
+}
+.gate-stub__perf {
+  height: 0;
+  margin: calc(-1 * var(--s-4)) calc(-1 * var(--s-4)) var(--s-3);
+  border-top: 2px dashed var(--rule);
+}
+.gate-stub__when {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.gate-stub__figure {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.gate-stub__figure span {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0;
+}
+.gate-stub__rate {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.gate-stub__mark {
+  margin: var(--s-3) 0 var(--s-2);
+}
+.gate-stub__fails {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+  color: var(--red-ink);
+}
+.gate-stub__fails li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+.gate-stub__fails svg {
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translateY(0.1em);
+}
+/* VOID at the foot of a blocked run, on its own band: it never sits under text. */
+.gate-stub__void {
+  margin-top: auto;
+  padding-top: var(--s-3);
+  border-top: 1px dashed color-mix(in srgb, var(--red) 35%, var(--rule));
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--red) 55%, transparent);
+  user-select: none;
+}
+.gate-stub__clean {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+.gate-stub__id {
+  padding-top: var(--s-3);
+  font-size: var(--text-2xs);
+  display: grid;
+  gap: 2px;
+}
+.gate-stub__safety {
+  color: var(--red-ink);
+  font-weight: 600;
+}
+
+.gate-stub--blocked {
+  border-color: color-mix(in srgb, var(--red) 30%, var(--rule));
+}
+
+/* The overprint lands as each blocked run enters. */
+.motion-ok .gate-stub[data-reveal] .gate-stub__void {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity var(--t-base) var(--ease-out) 120ms,
+    clip-path var(--t-slow) var(--ease-out) 120ms;
+}
+.motion-ok .gate-stub[data-reveal].is-in .gate-stub__void {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---- Incident ---- */
+
+.meter {
+  display: inline-block;
+  width: 9rem;
+  height: 0.6rem;
+  margin-right: var(--s-3);
+  vertical-align: middle;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+.meter__fill {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+}
+.meter__fill--low {
+  background: var(--red);
+}
+.meter__value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.incident {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+}
+.incident__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--s-7);
+}
+.reasons {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 24rem;
+}
+.reasons li {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: var(--text-sm);
+}
+.reasons .num {
+  font-weight: 700;
+}
+
+/* ---- Fine print and the stub ---- */
+
+.terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4) var(--s-7);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.terms strong {
+  color: var(--ink);
+}
+
+.stub {
+  margin-top: var(--s-6);
+  border: 1px solid var(--ink);
+  border-top: 2px dashed var(--ink-3);
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--paper);
+}
+/* The perforation label sits on the dashed edge. */
+.stub__cut {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: -0.7rem 0 0 var(--s-4);
+  padding: 0 var(--s-2);
+  background: color-mix(in srgb, var(--tint-fine) 40%, var(--paper));
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  vertical-align: top;
+}
+.stub__cut svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.stub__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-4);
+}
+.stub__title {
+  font-size: var(--text-md);
+}
+.stub__text {
+  margin-top: var(--s-1);
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+.stub__actions {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.stub__scan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.6em;
+  padding: var(--s-3) var(--s-5);
+  border-top: 1px solid var(--rule-soft);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+.stub__scan span {
+  white-space: nowrap;
+}
+
+/* ---- Page 1: the system map, stepped by the presenter ---- */
+
+.flow {
+  margin-top: var(--s-7);
+  scroll-margin-top: calc(var(--nav-h) + var(--s-7));
+}
+.flow__paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-bottom: var(--s-4);
+}
+.flow__path {
+  min-height: 2.5rem;
+  padding: 0 var(--s-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink-2);
+  font: 600 var(--text-sm) / 1 var(--font-sans);
+  cursor: pointer;
+  transition:
+    background var(--t-fast) var(--ease-out),
+    color var(--t-fast) var(--ease-out),
+    border-color var(--t-fast) var(--ease-out);
+}
+.flow__path:hover {
+  background: var(--paper-2);
+}
+.flow__path[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.flow__lede {
+  max-width: var(--measure);
+  margin-bottom: var(--s-5);
+  color: var(--ink-2);
+}
+.flow__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: start;
+}
+.flow__map {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.flow__line {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1.25;
+  transition: stroke var(--t-base) var(--ease-out);
+}
+.flow__line.is-walked {
+  stroke: color-mix(in srgb, var(--teal) 55%, var(--rule));
+}
+
+.flow__box {
+  fill: var(--paper);
+  stroke: var(--rule);
+  stroke-width: 1;
+  transition:
+    fill var(--t-base) var(--ease-out),
+    stroke var(--t-base) var(--ease-out);
+}
+.flow__cap {
+  fill: var(--rule);
+  transition: fill var(--t-base) var(--ease-out);
+}
+.flow__title {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.flow__sub {
+  font-size: 12px;
+  fill: var(--ink-3);
+}
+/* Colour by role: teal is code, ink is language. A node takes its colour only while the step is on it. */
+.flow__node--code.is-on .flow__cap {
+  fill: var(--teal);
+}
+.flow__node--language.is-on .flow__cap {
+  fill: var(--ink);
+}
+.flow__node--store.is-on .flow__cap {
+  fill: var(--ink-3);
+}
+.flow__node.is-on .flow__box {
+  stroke: var(--ink-3);
+}
+.flow__node--code.is-at .flow__box {
+  fill: var(--teal-wash-2);
+  stroke: var(--teal);
+  transition-delay: var(--arrive);
+}
+.flow__node--language.is-at .flow__box,
+.flow__node--store.is-at .flow__box {
+  fill: var(--paper-2);
+  stroke: var(--ink);
+  transition-delay: var(--arrive);
+}
+
+.flow__check rect {
+  fill: var(--paper-2);
+  stroke: var(--rule-soft);
+  transition:
+    fill var(--t-base) var(--ease-out),
+    stroke var(--t-base) var(--ease-out);
+}
+.flow__check text {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--ink-3);
+  transition: fill var(--t-base) var(--ease-out);
+}
+.flow__check.is-lit rect {
+  fill: var(--teal);
+  stroke: var(--teal);
+}
+.flow__check.is-lit text {
+  fill: var(--paper);
+}
+
+.flow__stamp rect {
+  fill: var(--paper);
+  stroke: var(--ink-3);
+}
+.flow__stamp text {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  fill: var(--ink-2);
+}
+.flow__stamp--ok rect {
+  fill: var(--teal-wash-2);
+  stroke: var(--teal);
+  stroke-width: 2;
+  stroke-dasharray: 2 2;
+}
+.flow__stamp--ok text {
+  fill: var(--teal-ink);
+}
+.flow__stamp--fail rect {
+  fill: var(--red-wash);
+  stroke: var(--red);
+  stroke-width: 2;
+}
+.flow__stamp--fail text {
+  fill: var(--red-ink);
+}
+
+.flow__draw {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.flow__arrow {
+  stroke: none;
+}
+.flow__hop--code .flow__draw {
+  stroke: var(--teal);
+}
+.flow__hop--code .flow__arrow {
+  fill: var(--teal);
+}
+.flow__hop--language .flow__draw {
+  stroke: var(--ink);
+}
+.flow__hop--language .flow__arrow {
+  fill: var(--ink);
+}
+.flow__hop--refused .flow__draw {
+  stroke: var(--red);
+}
+.flow__hop--refused .flow__arrow {
+  fill: var(--red);
+}
+
+/* The focal motion: each hop draws into the next, the way the trace's leaders draw to their source. */
+.motion-ok .flow__draw {
+  stroke-dasharray: 1;
+  animation: flow-draw var(--draw) var(--ease-in-out) var(--delay) backwards;
+}
+.motion-ok .flow__arrow {
+  animation: flow-arrive var(--t-fast) var(--ease-out) calc(var(--delay) + var(--draw)) backwards;
+}
+.motion-ok .flow__stamp.is-stamped {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: flow-stamp var(--t-slow) var(--ease-out) calc(var(--arrive, 0ms) + var(--t-base)) backwards;
+}
+@keyframes flow-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes flow-arrive {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes flow-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.flow__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.flow__legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.flow__swatch {
+  width: 1.25rem;
+  height: 2px;
+}
+.flow__swatch--code {
+  background: var(--teal);
+}
+.flow__swatch--language {
+  background: var(--ink);
+}
+.flow__swatch--refused {
+  background: var(--red);
+}
+
+/* The height is reserved for the longest step, so the source note stays still while the text changes. */
+.flow__panel {
+  min-height: 25rem;
+}
+/* The buttons sit above the text, so Next stays under the pointer when the text changes length. */
+.flow__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--rule);
+}
+.flow__count {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.flow__controls {
+  display: flex;
+  gap: var(--s-2);
+}
+.flow__title-text {
+  margin: var(--s-4) 0 var(--s-2);
+  font-size: var(--text-md);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.flow__owner {
+  margin: 0 0 var(--s-3);
+}
+.flow__detail {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.flow__evidence {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+}
+.flow__ev dt {
+  margin-bottom: var(--s-1);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+}
+.flow__ev dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+.flow__ev--fixed dd {
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--ink);
+}
+.flow__ev code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+.flow__refused {
+  color: var(--red-ink);
+  font-weight: 600;
+}
+
+.flow__source {
+  margin-top: var(--s-5);
+}
+.flow__all {
+  max-width: var(--measure);
+  margin-top: var(--s-3);
+  font-size: var(--text-sm);
+}
+.flow__all summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+.flow__all ol {
+  display: grid;
+  gap: var(--s-2);
+  margin: var(--s-3) 0 0;
+  padding-left: 1.4rem;
+  color: var(--ink-2);
+}
+.flow__all li::marker {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Narrow ---- */
+
+@media (max-width: 960px) {
+  .sheet__head,
+  .sheet__cols,
+  .incident__cols,
+  .flow__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .flow__panel {
+    min-height: 0;
+  }
+  .sheet__cols {
+    gap: var(--s-6);
+  }
+}
+@media (max-width: 560px) {
+  .col-result {
+    display: none;
+  }
+  .sheet__band {
+    gap: var(--s-2) var(--s-5);
+  }
+  .leaders__row {
+    grid-template-columns: auto minmax(1rem, 1fr) auto;
+  }
+  .leaders__note {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: right;
+  }
+}
+@media (max-width: 720px) {
+  .meter {
+    width: 4.5rem;
+  }
+  .running-head__inner {
+    padding: var(--s-2) var(--s-4);
+  }
+  .running-head__doc {
+    display: none;
+  }
+  .running-head__chapter::before {
+    display: none;
+  }
+  .sheet__title {
+    font-size: var(--text-xl);
+  }
+  .chapter__inner {
+    padding-top: var(--s-7);
+    padding-bottom: var(--s-7);
+  }
+  .terms {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stub__body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gate-track__strip {
+    padding-left: var(--s-4);
+    padding-right: var(--s-4);
+  }
+  .activity td {
+    padding: var(--s-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .running-head__rule {
+    transition: none;
+  }
+}

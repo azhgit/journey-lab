@@ -1,0 +1,184 @@
+.skip {
+  position: absolute;
+  left: var(--s-4);
+  top: -3rem;
+  z-index: 50;
+  padding: var(--s-2) var(--s-3);
+  background: var(--ink);
+  color: var(--paper);
+}
+.skip:focus {
+  top: var(--s-2);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: var(--nav-h);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  max-width: var(--page);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--s-5);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.wordmark:hover {
+  text-decoration: none;
+}
+.wordmark__band {
+  align-self: center;
+  width: 0.75rem;
+  height: 1.25rem;
+  background: var(--teal);
+  border-radius: 1px;
+}
+.wordmark__company {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.01em;
+}
+.wordmark__product {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--s-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: var(--nav-h);
+  padding: 0 var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  font-weight: 550;
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease-out);
+}
+.nav__link:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav__link[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 650;
+}
+.nav__short {
+  display: none;
+}
+.nav__link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: var(--s-3);
+  right: var(--s-3);
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink);
+}
+
+.page {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-5) var(--s-8);
+}
+.page--narrow {
+  max-width: 48rem;
+}
+.lede {
+  max-width: var(--measure);
+  margin-top: var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--text-read);
+}
+
+.colophon {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 var(--s-5) var(--s-7);
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+.colophon__inner {
+  display: grid;
+  gap: var(--s-1);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--rule);
+}
+.colophon p:first-child {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .nav__inner {
+    padding: 0 var(--s-4);
+    gap: var(--s-3);
+  }
+  .wordmark__product {
+    display: none;
+  }
+  .nav__long {
+    display: none;
+  }
+  .nav__short {
+    display: inline;
+  }
+  .nav__link {
+    white-space: nowrap;
+  }
+  .nav__link {
+    padding: 0 var(--s-2);
+    font-size: var(--text-xs);
+  }
+  .nav__link[aria-current="page"]::after {
+    left: var(--s-2);
+    right: var(--s-2);
+  }
+  .page {
+    padding: var(--s-6) var(--s-4) var(--s-7);
+  }
+}
+@media (max-width: 420px) {
+  .nav__inner {
+    gap: var(--s-2);
+  }
+  .wordmark {
+    gap: var(--s-1);
+  }
+  .wordmark__company {
+    font-size: var(--text-xs);
+  }
+  .nav__link {
+    padding: 0 0.4rem;
+  }
+  .nav__link[aria-current="page"]::after {
+    left: 0.4rem;
+    right: 0.4rem;
+  }
+  .colophon {
+    padding: 0 var(--s-4) var(--s-6);
+  }
+}
